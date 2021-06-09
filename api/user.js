@@ -32,7 +32,7 @@ router.post("/login", async (req, res) => {
     if (!username || !password) return res.status(404).json({ error: "Please provide all the details" });
     const query = "SELECT * FROM users WHERE username = ?";
     db.query(query, [username], async (err, results) => {
-        if (results.length == 0) return res.json({ error: "Wrong username/password" });
+        if (results.length == 0) return res.status(403).json({ error: "Wrong username/password" });
 
         let flag = await bcrypt.compare(password, results[0].password);
         if (flag) {
