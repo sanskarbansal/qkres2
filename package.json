@@ -4,9 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "pm2 start index.js",
+        "start": "pm2-runtime start ecosystem.config.js --env production",
         "build": "npm install && npm install --prefix client  && (cd client && npm run build)",
-        "heroku-postbuild": "npm i -g pm2 && npm run build ",
+        "heroku-postbuild": "npm run build ",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
@@ -21,6 +21,7 @@
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
-        "mysql": "^2.18.1"
+        "mysql": "^2.18.1",
+        "pm2": "^5.0.4"
     }
 }
