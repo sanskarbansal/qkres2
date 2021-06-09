@@ -15,7 +15,7 @@ const cors = require("cors");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/api/", require("/api/user"));
+app.use("/api/", require("./api/user"));
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 app.get("*", (req, res) => {
