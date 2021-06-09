@@ -10,12 +10,12 @@ var connection = mysql.createConnection({
 connection.connect((error) => {
     if (error) {
         console.log(error);
-        // console.log("Error while connecting to database");
     } else {
-        console.log("Connected to database");
+        var sql =
+            "CREATE TABLE IF NOT EXISTS users (id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), username VARCHAR(255), password VARCHAR(255), age VARCHAR(255), dob Date, address VARCHAR(255), phone VARCHAR(255))";
+        connection.query(sql);
     }
+    console.log("Connected to database");
 });
-
-connection.end();
 
 module.exports = connection;
