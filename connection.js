@@ -1,9 +1,9 @@
 var mysql = require("mysql");
 var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "silog",
+    host: "us-cdbr-east-04.cleardb.com",
+    user: "be6da9a82aedc1",
+    password: "7889d02a",
+    database: "heroku_6c3d2e07327fd6c",
     multipleStatements: true,
 });
 

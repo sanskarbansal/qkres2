@@ -27,7 +27,7 @@ export default function Dashboard({ user }) {
         event.preventDefault();
         if (!isEditing) return setisEditing(true);
         axios
-            .post("http://localhost:8080/api/update", { ...formdata, token })
+            .post("https://qkressb.herokuapp.com/api/update", { ...formdata, token })
             .then((res) => {
                 console.log(res);
                 setToken(res.data.token);

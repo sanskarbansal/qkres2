@@ -23,7 +23,7 @@ export default function Login() {
         const { username, password } = formdata;
         if (!username || !password) return alert("Please enter all the details");
         axios
-            .post("http://localhost:8080/api/login", formdata)
+            .post("https://qkressb.herokuapp.com/api/login", formdata)
             .then((res) => {
                 let token = res.data.token;
                 window.localStorage.setItem("token", token);
