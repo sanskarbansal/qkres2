@@ -25,7 +25,7 @@ export default function Signup({ setlogin }) {
         const { username, password, email, firstName, lastName } = formdata;
         if (!username || !password || !email || !firstName || !lastName) return alert("Please enter all the details");
         axios
-            .post("http://localhost:8080/api/register", formdata)
+            .post("https://qkressb.herokuapp.com/api/register", formdata)
             .then((res) => setlogin(true))
             .catch((err) => {
                 setformdata({ ...formdata, error: err.response.data.error });
