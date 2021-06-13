@@ -23,14 +23,16 @@ export default function Login() {
         const { username, password } = formdata;
         if (!username || !password) return alert("Please enter all the details");
         axios
-            .post("https://qkressb.herokuapp.com8080/api/login", formdata)
+            .post("https://qkressb.herokuapp.com/api/login", formdata)
             .then((res) => {
                 let token = res.data.token;
                 window.localStorage.setItem("token", token);
-
                 setToken(token);
             })
-            .catch((err) => seterror(err.response.data.error));
+            .catch((err) => {
+                console.log(err.response.data);
+                seterror(err.response.data.error);
+            });
     };
     return (
         <Container fluid="md" className="mt-5">
