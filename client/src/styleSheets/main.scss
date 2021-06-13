@@ -1,0 +1,5 @@
+@import "./base";
+.active {
+    @extend .button;
+    background-color: $primaryColor;
+}

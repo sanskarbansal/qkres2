@@ -1,0 +1,69 @@
+$primaryColor: #007bff;
+
+@mixin margins($direction) {
+    $i: 0.2;
+    $j: 1;
+    @while $i <= 3.2 {
+        .m#{str-slice($direction, 0, 1) }-#{$j} {
+            margin-#{$direction}: $i + rem;
+        }
+        $j: $j + 1;
+        $i: $i * 2;
+    }
+}
+
+.df {
+    display: flex;
+}
+
+.dfc {
+    @extend .df;
+    flex-direction: column;
+}
+.fwrap {
+    @extend .df;
+    flex-wrap: wrap;
+}
+.jcc {
+    justify-content: center;
+}
+.aic {
+    align-items: center;
+}
+
+@include margins(top);
+@include margins(right);
+@include margins(bottom);
+@include margins(left);
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn {
+    @extend .button;
+}
+.btn-primary {
+    @extend .btn;
+    background-color: $primaryColor;
+}
+
+.btn-outline-primary {
+    @extend .btn;
+    background-color: transparent;
+    border: 1px solid $primaryColor;
+    color: black;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}

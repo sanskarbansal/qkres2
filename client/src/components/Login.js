@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
-import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
+import { Form, Container, Row, Col, Alert } from "react-bootstrap";
 import appContext from "../AppContext";
 
 export default function Login() {
@@ -23,7 +23,7 @@ export default function Login() {
         const { username, password } = formdata;
         if (!username || !password) return alert("Please enter all the details");
         axios
-            .post("https://qkressb.herokuapp.com/api/login", formdata)
+            .post("https://qkressb.herokuapp.com8080/api/login", formdata)
             .then((res) => {
                 let token = res.data.token;
                 window.localStorage.setItem("token", token);
@@ -42,12 +42,13 @@ export default function Login() {
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formBasicUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control value={formdata.username} onChange={handleChange("username")} type="text" placeholder="Enter username" />
+                            <input className="input" value={formdata.username} onChange={handleChange("username")} type="text" placeholder="Enter username" />
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control
+                            <input
+                                className="input"
                                 value={formdata.password}
                                 autoComplete="off"
                                 onChange={handleChange("password")}
@@ -55,9 +56,9 @@ export default function Login() {
                                 placeholder="Password"
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <button className="btn-outline-primary" type="submit">
                             LOGIN
-                        </Button>
+                        </button>
                     </Form>
                 </Col>
             </Row>

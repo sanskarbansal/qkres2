@@ -1,4 +1,6 @@
 import "./App.css";
+import "./styleSheets/main.scss";
+
 import Home from "./components/Home";
 import AppContext from "./AppContext";
 import { useState, useEffect } from "react";

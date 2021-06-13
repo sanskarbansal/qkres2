@@ -5,13 +5,13 @@ const connection = require("./connection");
 const PORT = process.env.PORT || 8080;
 const path = require("path");
 
-// const cors = require("cors");
+const cors = require("cors");
 
-// app.use(
-//     cors({
-//         origin: "http://localhost:3000",
-//     })
-// );
+app.use(
+    cors({
+        origin: "https://qkressb.herokuapp.com3000",
+    })
+);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

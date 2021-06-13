@@ -11,9 +11,6 @@
     },
     "keywords": [],
     "author": "",
-    "nodemonConfig": {
-        "delay": 2500
-    },
     "license": "ISC",
     "dependencies": {
         "bcrypt": "^5.0.1",

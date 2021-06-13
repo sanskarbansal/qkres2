@@ -2,7 +2,10 @@ const router = require("express").Router();
 const db = require("../connection");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
+const path = require("path");
 
+const JSONPATH = "../data.json";
 function calculate_age(dob) {
     dob = new Date(dob);
     var diff_ms = Date.now() - dob.getTime();
@@ -13,6 +16,16 @@ function calculate_age(dob) {
 
 router.post("/register", (req, res) => {
     const { username, email, password, firstName, lastName } = req.body;
+    fs.readFile("data.json", (err, data) => {
+        let d;
+        if (!data) d = [];
+        else d = JSON.parse(data.toString());
+        d.push({ username, email, firstName, lastName });
+        fs.writeFile("data.json", JSON.stringify(d), (err) => {
+            if (err) console.log(err);
+        });
+    });
+
     if (!username || !email || !password || !lastName) return res.status(404).json({ error: "Please provide all the details" });
     db.query("SELECT * FROM users WHERE email = ? or username = ?  ", [email, username], async (err, results) => {
         if (err) return res.json("error while fetching user");
@@ -21,6 +34,7 @@ router.post("/register", (req, res) => {
                 error: "User already exists",
             });
         }
+        console.log(JSON.stringify({ username, email, firstName, lastName }));
         let hashedPass = await bcrypt.hash(password, 8);
         db.query("INSERT INTO users SET ? ", { name: `${firstName} ${lastName}`, username: username, email: email, password: hashedPass });
         return res.json({ message: "User created successfully" });
